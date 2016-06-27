@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Invoice implements Serializable {
     
     @ManyToOne
-    private Account user;
+    private Account account;
 
     @OneToMany(fetch=EAGER, cascade=CascadeType.PERSIST)
     private List<LineItem> lineItems;
@@ -35,12 +35,12 @@ public class Invoice implements Serializable {
     public Invoice() {
     }
 
-    public void setUser(Account user) {
-        this.user = user;
+    public void setUser(Account account) {
+        this.account = account;
     }
 
-    public Account getUser() {
-        return user;
+    public Account getAccount() {
+        return account;
     }
 
     public void setLineItems(List<LineItem> lineItems) {
