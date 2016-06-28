@@ -10,8 +10,10 @@ import java.util.Date;
 @Table(name = "account")
 public class Account implements java.io.Serializable {
 
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "first_name")
@@ -28,6 +30,10 @@ public class Account implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     private Date created;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERID", foreignKey = @ForeignKey(name = "fk_user"))
+    private User user;
+
     protected Account() {
 
     }
@@ -40,6 +46,7 @@ public class Account implements java.io.Serializable {
         this.created = new Date();
     }
 
+    //    @OneToOne
     public Long getId() {
         return id;
     }
@@ -78,6 +85,14 @@ public class Account implements java.io.Serializable {
 
     public Date getCreated() {
         return created;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 //    private String timeCreated() {

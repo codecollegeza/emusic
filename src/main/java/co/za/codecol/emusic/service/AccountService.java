@@ -34,6 +34,7 @@ public class AccountService implements UserDetailsService {
     @Transactional
     public Account save(Account account) {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
+        account.setUser(new co.za.codecol.emusic.domain.User());
         accountRepository.save(account);
         return account;
     }
