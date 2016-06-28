@@ -1,5 +1,6 @@
 package co.za.codecol.emusic.controller;
 
+import co.za.codecol.emusic.domain.Account;
 import co.za.codecol.emusic.domain.Cart;
 import co.za.codecol.emusic.domain.LineItem;
 import co.za.codecol.emusic.service.ProductService;
@@ -24,6 +25,7 @@ public class CartController {
         LineItem lineItem = new LineItem();
         lineItem.setProduct(productService.selectProduct(productCode));
         cart.addItem(lineItem);
+        model.addAttribute("account", new Account("", "", "", "ROLE_USER"));
         model.addAttribute("cart", cart);
         return "cart";
     }
@@ -31,6 +33,7 @@ public class CartController {
     @RequestMapping(value = "/cart")
     public String showCart(Model model) {
         model.addAttribute("cart", cart);
+        model.addAttribute("account", new Account("", "", "", "ROLE_USER"));
         return "cart";
     }
 
@@ -39,6 +42,7 @@ public class CartController {
         LineItem lineItem = new LineItem();
         lineItem.setProduct(productService.selectProduct(productCode));
         cart.removeItem(lineItem);
+        model.addAttribute("account", new Account("", "", "", "ROLE_USER"));
         model.addAttribute("cart", cart);
         return "cart";
     }
@@ -52,6 +56,7 @@ public class CartController {
         int newQty = Integer.parseInt(quantity);
         lineItem.setQuantity(newQty);
         cart.addItem(lineItem);
+        model.addAttribute("account", new Account("", "", "", "ROLE_USER"));
         model.addAttribute("cart", cart);
         return "cart";
     }

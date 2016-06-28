@@ -30,6 +30,7 @@ public class SignupController {
 	@RequestMapping(value = "/signup")
 	public String signup(Model model) {
 		model.addAttribute(new SignupForm());
+		model.addAttribute("account", new Account("", "", "", "ROLE_USER"));
         model.addAttribute("cart", cart);
         return SIGNUP_VIEW_NAME;
 	}

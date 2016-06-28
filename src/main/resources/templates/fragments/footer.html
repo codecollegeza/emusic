@@ -1,12 +1,21 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html>
-  <head>
-  </head>
+<head>
+</head>
 <body>
-	<nav class="navbar navbar-inverse navbar-static-bottom">
-	  <div class="container">
-	    <p class="navbar-text"><a href="#">EMusic</a> &copy; <put-date th:text=${#dates.year(#dates.createNow())}></put-date> | Reproduced at Code College .</p>
-	  </div>
-	</nav>
+<nav class="navbar navbar-inverse navbar-static-bottom">
+    <div class="container">
+        <p class="navbar-text"><a href="#">EMusic</a> &copy;
+            <put-date th:text=${#dates.year(#dates.createNow())}></put-date>
+            | Reproduced at Code College .
+        </p>
+    </div>
+    <form th:action="@{/email/subscribe}" method="post">
+    <input type="text" name="firstName" placeholder="First Name" required="required"></input>
+    <input type="email" name="email" placeholder="Email" required="required"></input>
+    <label>&nbsp;</label>
+    <button class="btn btn-warning" type="submit">Subscribe</button>s
+    </form>
+</nav>
 </body>
 </html>

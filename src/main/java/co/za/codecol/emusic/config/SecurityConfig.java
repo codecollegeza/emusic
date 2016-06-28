@@ -53,7 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/signup",
                         "/404",
-                        "/cart/**"
+                        "/cart/**",
+                        "/email/**"
                 )
                 .permitAll()
                 .anyRequest().authenticated()

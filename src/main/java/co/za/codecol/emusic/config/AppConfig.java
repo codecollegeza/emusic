@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
+import java.util.Properties;
+
 @Configuration
 class AppConfig {
 
@@ -32,3 +34,5 @@ class AppConfig {
         return new MyCustomizer();
     }
 }
+
+

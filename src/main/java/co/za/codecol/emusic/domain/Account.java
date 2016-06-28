@@ -28,6 +28,19 @@ public class Account implements java.io.Serializable {
     @Temporal(TemporalType.DATE)
     private Date created;
 
+
+    public boolean isEmailSubscribed() {
+        return isEmailSubscribed;
+    }
+
+    public void setEmailSubscribed(boolean emailSubscribed) {
+        isEmailSubscribed = emailSubscribed;
+    }
+
+    private  boolean isEmailSubscribed;
+
+
+
     protected Account() {
 
     }
