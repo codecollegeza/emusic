@@ -1,35 +1,41 @@
 package co.za.codecol.emusic.domain;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
 
-
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Account account;
-
+    @Column(name = "FIRSTNAME")
     private String firstName;
+    @Column(name = "LASTNAME")
     private String lastName;
+    @Column(name = "EMAIL")
     private String email;
+    @Column(name = "COMPANYNAME")
     private String companyName;
+    @Column(name = "ADDRESS1")
     private String address1;
+    @Column(name = "ADDRESS2")
     private String address2;
+    @Column(name = "CITY")
     private String city;
+    @Column(name = "ST")
     private String st;
+    @Column(name = "ZIP")
     private String zip;
+    @Column(name = "COUNTRY")
     private String country;
+    @Column(name = "CREDITCARDTYPE")
     private String creditCardType;
+    @Column(name = "CREDITCARDNUMBER")
     private String creditCardNumber;
+    @Column(name = "CREDITCARDEXPIRATIONDATE")
     private String creditCardExpirationDate;
 
     public User() {
@@ -47,7 +53,7 @@ public class User implements Serializable {
         creditCardNumber = "";
         creditCardExpirationDate = "";
     }
-    
+
     public Long getId() {
         return userId;
     }
@@ -185,11 +191,4 @@ public class User implements Serializable {
         return creditCardExpirationDate;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 }

@@ -3,6 +3,7 @@ package co.za.codecol.emusic.service;
 
 import co.za.codecol.emusic.repository.AccountRepository;
 import co.za.codecol.emusic.domain.Account;
+import co.za.codecol.emusic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -31,19 +32,25 @@ public class AccountService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Transactional
     public Account save(Account account) {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        account.setUser(new co.za.codecol.emusic.domain.User());
+//        co.za.codecol.emusic.domain.User user = new co.za.codecol.emusic.domain.User();
+//        user = saveUser(user);
+//        account.setUser(user);
+//        account.setUser(user);
         accountRepository.save(account);
         return account;
     }
 
-    public Account findOneByEmail(String email){
+    public Account findOneByEmail(String email) {
         return accountRepository.findOneByEmail(email);
     }
 
-    public Account findOne(Long id){
+    public Account findOne(Long id) {
         return accountRepository.findOne(id);
     }
 
@@ -72,4 +79,8 @@ public class AccountService implements UserDetailsService {
         return new SimpleGrantedAuthority(account.getRole());
     }
 
+
+    private co.za.codecol.emusic.domain.User saveUser(co.za.codecol.emusic.domain.User user) {
+        return userRepository.save(user);
+    }
 }
