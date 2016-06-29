@@ -34,6 +34,7 @@ public class CartController {
         return "cart";
     }
 
+
     @RequestMapping(value = "/cart/removeItem", method = RequestMethod.POST)
     public String removeItem(@RequestParam(name = "productCode") String productCode, Model model) {
         LineItem lineItem = new LineItem();

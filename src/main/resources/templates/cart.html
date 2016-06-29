@@ -63,7 +63,7 @@
                                 <td>
                                     <form th:method="post" th:action="@{/cart/removeItem}">
                                         <input type="hidden" name="productCode" th:value="${item.product.code}"></input>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o">Remove</i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -85,8 +85,9 @@
                             <a th:href="@{/}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                         </div>
                         <div th:if="${cart} != null and ${cart.count} > 0" class="pull-right">
-                            <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
-                            </button>
+                                <a  th:href="@{/checkout}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                </a>
+
                         </div>
                     </div>
 
