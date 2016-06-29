@@ -85,10 +85,9 @@
                             <a th:href="@{/}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                         </div>
                         <div th:if="${cart} != null and ${cart.count} > 0" class="pull-right">
-                            <form th:action="@{/checkout/start}" method="post">
-                                <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
-                                </button>
-                            </form>
+                                <a  th:href="@{/checkout}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                </a>
+
                         </div>
                     </div>
 

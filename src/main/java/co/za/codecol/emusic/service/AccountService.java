@@ -37,11 +37,14 @@ public class AccountService implements UserDetailsService {
 
     @Transactional
     public Account save(Account account) {
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
-//        co.za.codecol.emusic.domain.User user = new co.za.codecol.emusic.domain.User();
-//        user = saveUser(user);
-//        account.setUser(user);
-//        account.setUser(user);
+//        Account oldAccount = findOneByEmail(account.getEmail());
+//        if(account.getPassword() != null){
+            account.setPassword(passwordEncoder.encode(account.getPassword()));
+//        }
+//        if(oldAccount.getId() != null){
+//            account.setId(oldAccount.getId());
+//            accountRepository.save(account);
+//        }
         accountRepository.save(account);
         return account;
     }
@@ -79,8 +82,4 @@ public class AccountService implements UserDetailsService {
         return new SimpleGrantedAuthority(account.getRole());
     }
 
-
-    private co.za.codecol.emusic.domain.User saveUser(co.za.codecol.emusic.domain.User user) {
-        return userRepository.save(user);
-    }
 }

@@ -1,6 +1,7 @@
 package co.za.codecol.emusic.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "account")
+@Component
 public class Account implements java.io.Serializable {
 
 
@@ -48,32 +50,13 @@ public class Account implements java.io.Serializable {
     private String zip;
     @Column(name = "COUNTRY")
     private String country;
-    @Column(name = "CREDITCARDTYPE")
-    private String creditCardType;
-    @Column(name = "CREDITCARDNUMBER")
-    private String creditCardNumber;
-    @Column(name = "CREDITCARDEXPIRATIONDATE")
-    private String creditCardExpirationDate;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//  @JoinColumn(name = "USERID", foreignKey = @ForeignKey(name = "fk_user"))
-//    private User user;
-
-    protected Account() {
-
-    }
-
-    public Account(String name, String email, String password, String role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.created = new Date();
-    }
-
-    //    @OneToOne
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -112,18 +95,125 @@ public class Account implements java.io.Serializable {
         return created;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public void setCreated(Date created) {
+        this.created = created;
+    }
 
-//    private String timeCreated() {
-//        java.util.Date dt = new java.util.Date();
-//        java.text.SimpleDateFormat sdf =
-//                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        return sdf.format(dt);
-//    }
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getSt() {
+        return st;
+    }
+
+    public void setSt(String st) {
+        this.st = st;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCreditCardType() {
+        return creditCardType;
+    }
+
+    public void setCreditCardType(String creditCardType) {
+        this.creditCardType = creditCardType;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    public String getCreditCardExpirationDate() {
+        return creditCardExpirationDate;
+    }
+
+    public void setCreditCardExpirationDate(String creditCardExpirationDate) {
+        this.creditCardExpirationDate = creditCardExpirationDate;
+    }
+
+    @Column(name = "CREDITCARDTYPE")
+    private String creditCardType;
+    @Column(name = "CREDITCARDNUMBER")
+    private String creditCardNumber;
+    @Column(name = "CREDITCARDEXPIRATIONDATE")
+    private String creditCardExpirationDate;
+
+    protected Account() {
+
+    }
+
+    public Account(String name, String email, String password, String role, String lastName, String address1, String address2, String companyName, String city, String zip, String state, String country ) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.created = new Date();
+        this.lastName = lastName;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.companyName = companyName;
+        this.city = city;
+        this.zip = zip;
+        this.st = state;
+        this.country = country;
+    }
+
+
+
 }
