@@ -71,7 +71,7 @@
                             <tfoot>
                             <tr th:if="${cart} != null and ${cart.count} > 0">
                                 <th colspan="5">Total</th>
-                                <th colspan="2">$498.55</th>
+                                <th colspan="2" th:text="${cart.cartTotal}">$498.55</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -192,7 +192,7 @@
             <!-- /.col-md-9 -->
 
             <div class="col-md-3">
-                <div class="box" id="order-summary">
+                <div class="box" id="order-summary" >
                     <div class="box-header">
                         <h3>Order summary</h3>
                     </div>
@@ -203,23 +203,22 @@
                             <tbody>
                             <tr>
                                 <td>Order subtotal</td>
-                                <th>$446.00</th>
+                                <td th:text="${cart.cartTotal}"></td>
                             </tr>
                             <tr>
                                 <td>Shipping and handling</td>
-                                <th>$10.00</th>
-                            </tr>
-                            <tr>
-                                <td>Tax</td>
-                                <th>$0.00</th>
+                                <th th:text="${cart.shipping}"></th>
                             </tr>
                             <tr class="total">
                                 <td>Total</td>
-                                <th>$456.00</th>
+                                <td th:text="${cart.cartGrandTotal}"></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                </div>
 
                 </div>
 

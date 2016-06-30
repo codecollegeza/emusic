@@ -51,5 +51,30 @@ public class Cart implements Serializable {
             }
         }
     }
+
+    public double getCartTotal() {
+        double cartTotal = 0.00;
+        for (LineItem item : items) {
+            cartTotal += item.getTotal();
+        }
+        return cartTotal;
+    }
+    public double getCartGrandTotal() {
+
+        double flatDeliveryFee = 35.00;
+        if(getCartTotal() > 50) {
+            return getCartTotal();
+        }else{
+            return getCartTotal() + flatDeliveryFee;
+        }
+    }
+    public double getShipping(){
+        double flatDeliveryFee = 35.00;
+        if(getCartTotal() > 50) {
+            return 0.00;
+        }else{
+            return flatDeliveryFee;
+        }
+    }
 }
 

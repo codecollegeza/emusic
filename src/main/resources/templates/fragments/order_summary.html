@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<div th:fragment="order_summary">
+    <div class="box" id="order-summary" >
+        <div class="box-header">
+            <h3>Order summary</h3>
+        </div>
+        <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Order subtotal</td>
+                    <td th:text="${cart.cartTotal}"></td>
+                </tr>
+                <tr>
+                    <td>Shipping and handling</td>
+                    <th th:text="${cart.shipping}"></th>
+                </tr>
+                <tr class="total">
+                    <td>Total</td>
+                    <td th:text="${cart.cartGrandTotal}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
