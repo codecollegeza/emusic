@@ -16,7 +16,6 @@ class AppConfig {
     public AuthenticationSuccessHandler successHandler() {
         SimpleUrlAuthenticationSuccessHandler handler = new SimpleUrlAuthenticationSuccessHandler();
         handler.setAlwaysUseDefaultTargetUrl(true);
-        handler.setDefaultTargetUrl("/");
         return handler;
     }
 

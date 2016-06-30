@@ -1,9 +1,8 @@
 package co.za.codecol.emusic.service;
 
 
-import co.za.codecol.emusic.repository.AccountRepository;
 import co.za.codecol.emusic.domain.Account;
-import co.za.codecol.emusic.repository.UserRepository;
+import co.za.codecol.emusic.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -32,19 +31,9 @@ public class AccountService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @Transactional
     public Account save(Account account) {
-//        Account oldAccount = findOneByEmail(account.getEmail());
-//        if(account.getPassword() != null){
             account.setPassword(passwordEncoder.encode(account.getPassword()));
-//        }
-//        if(oldAccount.getId() != null){
-//            account.setId(oldAccount.getId());
-//            accountRepository.save(account);
-//        }
         accountRepository.save(account);
         return account;
     }

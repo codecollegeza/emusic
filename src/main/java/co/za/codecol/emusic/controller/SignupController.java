@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @Controller
 public class SignupController {
 
-    private static final String SIGNUP_VIEW_NAME = "customer_access";
+    private static final String SIGNUP_VIEW_NAME = "signup";
 
 	@Autowired
 	private AccountService accountService;

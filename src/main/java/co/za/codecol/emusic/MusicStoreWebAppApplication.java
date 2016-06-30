@@ -9,13 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @ComponentScan("co.za.codecol.emusic")
 @SpringBootApplication
-public class SpringBootDemoApplication {
-
-	
+public class MusicStoreWebAppApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoApplication.class, args);
+        SpringApplication.run(MusicStoreWebAppApplication.class, args);
     }
-   
-   
 }
 

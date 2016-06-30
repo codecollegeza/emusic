@@ -21,14 +21,8 @@
             <div class="col-md-9" id="checkout">
 
                 <div class="box">
-                    <form method="post" th:action="@{/checkout/delivery}" >
-                        <h1>Checkout <p th:href="${account.email}"></p></h1>
-                        <div th:if="${account} == null">
-                            No Account
-                            </div>
-                        <div th:if="${account} != null">
-                            Have Account <p th:text="${account.email}"></p>
-                            </div>
+                    <form method="post" th:action="@{/checkout/delivery}">
+                        <h1>Checkout </h1>
                         <ul class="nav nav-pills nav-justified">
                             <li class="active"><a th:href="@{/checkout}"><i class="fa fa-map-marker"></i><br>Address</a>
                             </li>
