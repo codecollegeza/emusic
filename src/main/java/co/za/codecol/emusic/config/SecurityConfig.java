@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .permitAll()
-                .logoutSuccessUrl("/signin?logout")
+                .logoutSuccessUrl("/")
                 .and()
                 .rememberMe()
                 .rememberMeServices(rememberMeServices())

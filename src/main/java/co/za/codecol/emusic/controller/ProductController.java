@@ -19,11 +19,16 @@ public class ProductController {
     @Autowired
     private Cart cart;
 
-    @RequestMapping(value = {"/","/catalog"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/catalog"}, method = RequestMethod.GET)
     public String productList(Model model) {
         model.addAttribute("products", productService.selectProducts());
         model.addAttribute("cart", cart);
         return "index";
     }
+
+//    @RequestMapping(name = "/customer/show")
+//    public String showAccount() {
+//        return "customer-account";
+//    }
 
 }
