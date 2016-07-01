@@ -19,8 +19,8 @@ public class DefaultEmailService implements EmailService {
 
     @Override
     public void sendConfirmationEmail(String toEmail) throws MessagingException {
-        smtpMailSender.send(toEmail, "Order comfirm", "Your order has been placed");
-    }
+        smtpMailSender.send(toEmail, "Order confirm", "Your order has been placed");
+}
 
 
 }

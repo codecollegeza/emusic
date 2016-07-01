@@ -14,4 +14,3 @@ public class MusicStoreWebAppApplication {
         SpringApplication.run(MusicStoreWebAppApplication.class, args);
     }
 }
-

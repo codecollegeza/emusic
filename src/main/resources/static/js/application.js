@@ -1,19 +1,13 @@
 $(document).ready(function () {
-
-    // // process the form
-    // $('a#linkAddToCart').click(function (event) {
-    //     $.ajax({
-    //         url: '/cart/addItem',
-    //         type: 'post',
-    //         data: {"productCode": $('#productCode').val()},
-    //         success: function (data, textStatus, jQxhr) {
-    //             $('#response pre').html(JSON.stringify(data));
-    //             console.log(data);
-    //         },
-    //         error: function (jqXhr, textStatus, errorThrown) {
-    //             console.log(errorThrown);
-    //         }
-    //     });
-    // });
-
+    // $("#new_password_confirm").keyup(checkPasswordMatch);
+    //
+    // function checkPasswordMatch() {
+    //     var password = $("#new_password").val();
+    //     var confirmPassword = $("#new_password_confirm").val();
+    //
+    //     if (password != confirmPassword)
+    //         $("#change_password_alert").append("<h2 style='color: red'>Passwords do not match!</h2>");
+    //     else
+    //         $("#change_password_alert").append("<h2>Passwords match.</h2>");
+    // }
 });

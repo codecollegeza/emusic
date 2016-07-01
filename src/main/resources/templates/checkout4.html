@@ -103,11 +103,9 @@
                                     to Payment method</a>
                             </div>
                             <div class="pull-right">
-                                <form method="post" th:action="@{/placeOrder}">
-                                    <button type="submit" class="btn btn-primary">Place an order<i
+                                    <a th:href="@{/checkout/placeOrder}" class="btn btn-primary">Place an order<i
                                             class="fa fa-chevron-right"></i>
-                                    </button>
-                                </form>
+                                    </a>
                             </div>
                         </div>
                     </form>

@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.util.Collections;
 
 @Service
@@ -36,6 +37,43 @@ public class AccountService implements UserDetailsService {
             account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
         return account;
+    }
+
+    @Transactional
+    public Account updateAccount(Account account) {
+        Account accountFromView = account;
+        account = findOneByEmail(account.getEmail());
+        if(account == null){
+            throw new UsernameNotFoundException("email does not found");
+        }
+        accountFromView.setId(account.getId());
+        accountFromView.setPassword(account.getPassword());
+        accountFromView.setCreated(account.getCreated());
+        accountRepository.save(accountFromView);
+        return account;
+    }
+
+    @Transactional
+    public Account updatePassword(Account account, String oldPaas,String newPassword) {
+        account = findOneByEmail(account.getEmail());
+        if(account == null){
+            throw new UsernameNotFoundException("email does not found");
+        }
+
+        if(isOldPasswordCorrect(oldPaas, account.getId())){
+            account.setPassword(passwordEncoder.encode(newPassword));
+            accountRepository.save(account);
+        }
+        return account;
+    }
+
+    private boolean isOldPasswordCorrect(String oldPassword, Long userId){
+        Account account = findOne(userId);
+        if(account != null){
+            account.getPassword().equals(passwordEncoder.encode(oldPassword));
+            return true;
+        }
+        return false;
     }
 
     public Account findOneByEmail(String email) {

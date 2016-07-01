@@ -23,9 +23,6 @@ import java.security.Principal;
 public class CheckoutController {
 
     @Autowired
-    private AccountService accountService;
-
-    @Autowired
     private Cart cart;
 
     @Autowired
@@ -36,6 +33,9 @@ public class CheckoutController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private AccountService accountService;
 
     @RequestMapping(value = "/checkout/delivery")
     public String comfirmDelivery(Model model, Principal principal) {
@@ -62,11 +62,11 @@ public class CheckoutController {
         return "checkout4";
     }
 
-//    @RequestMapping(name = "/placeOrder")
+//    @RequestMapping(name = "/checkout/placeOrder")
     public String placeOrder(Model model, Principal principal) throws MessagingException {
         Account newAcc = getAccount(principal);
         model.addAttribute("account", newAcc);
-        if (account.getEmail() != null)
+        if (newAcc.getEmail() != null)
             emailService.sendConfirmationEmail(newAcc.getEmail());
         model.addAttribute("cart", cart);
         return "index";
@@ -104,7 +104,6 @@ public class CheckoutController {
         account.setZip(zip);
         account.setCountry(country);
         account.setSt(state);
-
 
         accountService.save(account);
         return "checkout1";

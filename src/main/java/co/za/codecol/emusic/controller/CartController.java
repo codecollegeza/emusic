@@ -1,14 +1,20 @@
 package co.za.codecol.emusic.controller;
 
+import co.za.codecol.emusic.domain.Account;
 import co.za.codecol.emusic.domain.Cart;
 import co.za.codecol.emusic.domain.LineItem;
+import co.za.codecol.emusic.service.AccountService;
 import co.za.codecol.emusic.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.Principal;
 
 @Controller
 public class CartController {
@@ -17,7 +23,13 @@ public class CartController {
     private Cart cart;
 
     @Autowired
+    private AccountService accountService;
+
+    @Autowired
     private ProductService productService;
+
+    @Autowired
+    private Account account;
 
     @RequestMapping(value = "/cart/addItem", method = RequestMethod.POST)
     public String addToCart(@RequestParam(name = "productCode") String productCode, Model model) {
@@ -56,4 +68,7 @@ public class CartController {
         model.addAttribute("cart", cart);
         return "cart";
     }
+
+
+
 }
